@@ -1,0 +1,31 @@
+<form [formGroup]='filterData'>
+    <input matInput type="text" placeholder="Pesquisar pelo titulo do livro" formControlName="search">
+  </form>
+  
+  <p style="float: right; padding-right: 20px;" *ngIf="resourcesLoaded">Atualizando a lista de autores, aguarde por
+    favor...</p>
+  
+  <section class="filtro">
+    <button mat-raised-button routerLink="add-author" (click)="newAuthor()">Adicionar novo author</button>
+    <button mat-raised-button routerLink="add-book" (click)="newBook()">Adicionar novo livro</button>
+  </section>
+  
+  <div class="space">
+    <div class="book" *ngFor="let author of authors">
+      <div fxFlex="100%">
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title style="font-size: 16px;"> {{author.firstName}} {{author.lastName}}</mat-card-title>           
+            <button mat-raised-button (click)="edit(author)" routerLink="edit-author">Editar</button>
+            <button mat-raised-button (click)="delete(author.id)">Excluir</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>

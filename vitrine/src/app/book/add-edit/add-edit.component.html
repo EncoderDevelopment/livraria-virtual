@@ -1,0 +1,44 @@
+<p style="float: right; padding-right: 20px;" *ngIf="resourcesLoaded">Atualizando a lista de livros, aguarde por
+    favor...</p>
+    
+<form>
+    <p class="title">Informações de livros para a vitrine da loja da livraria virtual</p>
+</form>
+
+<form [formGroup]="formEdit" class="form-up-insert">
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Title: </label>
+        </div>
+        <div class="form-group col">
+            <input matInput type="text" placeholder="Titulo" formControlName="title"
+                [ngStyle]="{'border': validation.title.errors && validation.title.errors.incorrect === true ? '1px solid red' : '1px solid #ccc' }">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Isbn: </label>
+        </div>
+        <div class="form-group col">
+            <input matInput type="text" placeholder="Isbn" formControlName="isbn"
+                [ngStyle]="{'border': validation.isbn.errors && validation.isbn.errors.incorrect === true ? '1px solid red' : '1px solid #ccc' }">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Autor: </label>
+        </div>
+        <div class="form-group col">
+            <select formControlName="authorId"
+                [ngStyle]="{'border': validation.authorId.errors && validation.authorId.errors.incorrect === true ? '1px solid red' : '1px solid #ccc' }">
+                <option value={{selectedAuthor.id}}>{{selectedAuthor.firstName}} {{selectedAuthor.lastName}}</option>
+                <option *ngFor="let author of authors" value={{author.id}}>{{author.firstName}} {{author.lastName}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" mat-raised-button (click)="saveOrUpdate()">Salvar</button>
+    <button mat-raised-button routerLink="/book">Cancelar</button>
+</form>
