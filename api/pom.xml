@@ -13,7 +13,7 @@
 	<artifactId>Livraria-Virtual</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Livraria-Virtual</name>
-	<description>Prova de conceito INDT</description>
+	<description>Prova de conceito</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>2020.0.1</spring-cloud.version>
